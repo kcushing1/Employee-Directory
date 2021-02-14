@@ -1,8 +1,11 @@
 import React from "react";
+import fakeData from "../assets/fakeData";
 
 export default function Table(props) {
   //take in generated info
   //fill table
+  //let fullName = props.name.first + " " + props.name.last
+
   return (
     <div className="table">
       <table>
@@ -16,10 +19,10 @@ export default function Table(props) {
         </thead>
         <tbody>
           <tr>
-            <td>Tom</td>
-            <td>20</td>
-            <td>tom@hi.com</td>
-            <td>555-UCA-LLME</td>
+            <td>{props.name}</td>
+            <td>{props.age}</td>
+            <td>{props.email}</td>
+            <td>{props.phone}</td>
           </tr>
         </tbody>
       </table>
