@@ -21,11 +21,34 @@ export default class App extends Component {
       });
   }
 
+  handleSortName = () => {
+    let people = this.state.people;
+    people.sort((a, b) => {
+      let nameA = a.name.first.toUpperCase();
+      let nameB = b.name.first.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      } else if (nameA > nameB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    this.setState({ people });
+  };
+
   render() {
     return (
       <div>
         <Header />
         <Search />
+        <button
+          type="button"
+          label="Sort By Name"
+          onClick={this.handleSortName}
+        >
+          Sort By Name
+        </button>
         {this.state.people.map((person) => {
           let fullName = person.name.first + " " + person.name.last;
           let location = person.location.city + ", " + person.location.state;
