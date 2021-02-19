@@ -37,6 +37,22 @@ export default class App extends Component {
     this.setState({ people });
   };
 
+  handleSortCountry = () => {
+    let people = this.state.people;
+    people.sort((a, b) => {
+      let nameA = a.location.country.toUpperCase();
+      let nameB = b.location.country.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      } else if (nameA > nameB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    this.setState({ people });
+  };
+
   render() {
     return (
       <div>
@@ -49,9 +65,21 @@ export default class App extends Component {
         >
           Sort By Name
         </button>
+        <button
+          type="button"
+          label="Sort By Country"
+          onClick={this.handleSortCountry}
+        >
+          Sort By Country
+        </button>
         {this.state.people.map((person) => {
           let fullName = person.name.first + " " + person.name.last;
-          let location = person.location.city + ", " + person.location.state;
+          let location =
+            person.location.city +
+            ", " +
+            person.location.state +
+            ", " +
+            person.location.country;
           return (
             <Table
               name={fullName}
