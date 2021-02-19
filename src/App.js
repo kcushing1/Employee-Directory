@@ -1,6 +1,9 @@
 import "./App.css";
 import { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "./components/Table";
+import Header from "./components/Header";
+import Search from "./components/Search";
 
 export default class App extends Component {
   state = {
@@ -20,14 +23,18 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
+        <Header />
+        <Search />
         {this.state.people.map((person) => {
+          let fullName = person.name.first + " " + person.name.last;
+          let location = person.location.city + ", " + person.location.state;
           return (
             <Table
-              name={person.name.first}
-              age={person.dob.age}
+              name={fullName}
               email={person.email}
               phone={person.cell}
+              location={location}
               key={person.cell}
             />
           );

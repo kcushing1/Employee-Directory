@@ -11,17 +11,17 @@ export default function Table(props) {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Age</th>
             <th>email</th>
             <th>Phone</th>
+            <th>Location</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>{props.name}</td>
-            <td>{props.age}</td>
             <td>{props.email}</td>
             <td>{props.phone}</td>
+            <td>{props.location}</td>
           </tr>
         </tbody>
       </table>
