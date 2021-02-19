@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Component } from "react";
+import Table from "./components/Table";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    people: [],
+  };
+
+  componentDidMount() {
+    console.log("component did mount");
+    const data = fetch("https://randomuser.me/api/?results=10");
+    data
+      .then((resp) => resp.json())
+      .then((response) => {
+        this.setState({ people: response.results });
+        console.log("setState", this.state.people);
+      });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.people.map((person) => {
+          return (
+            <Table
+              name={person.name.first}
+              age={person.dob.age}
+              email={person.email}
+              phone={person.cell}
+              key={person.cell}
+            />
+          );
+        })}
+      </div>
+    );
+  }
 }
-
-export default App;
