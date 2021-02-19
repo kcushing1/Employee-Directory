@@ -61,7 +61,11 @@ export default class App extends Component {
 
     let findName = this.state.people.filter((person) => {
       let findPerson = person.name.first.toString().toLowerCase();
-      if (findPerson.includes(this.state.search)) {
+      let findOthPerson = person.name.last.toString().toLowerCase();
+      if (
+        findPerson.includes(this.state.search) ||
+        findOthPerson.includes(this.state.search)
+      ) {
         return person;
       }
     });
@@ -79,6 +83,22 @@ export default class App extends Component {
           placeholder="Search Name"
           onChange={this.handleSearchByName}
         ></input>
+        <button
+          type="button"
+          label="Reset Search"
+          onClick={(e) => {
+            this.setState({ search: "" });
+            const data = fetch("https://randomuser.me/api/?results=10");
+            data
+              .then((resp) => resp.json())
+              .then((response) => {
+                this.setState({ people: response.results });
+                console.log("setState", this.state.people);
+              });
+          }}
+        >
+          Reset
+        </button>
         <button
           type="button"
           label="Sort By Name"
