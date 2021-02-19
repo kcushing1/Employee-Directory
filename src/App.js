@@ -1,28 +1,25 @@
-import React from "react";
-import Wrapper from "./components/Wrapper";
-import fakeData from "./assets/fakeData";
-import Table from "./components/Table";
+import logo from './logo.svg';
+import './App.css';
 
-class App extends React.Component {
-  state = {
-    fakeData,
-  };
-  //console.log(fakeData)
-  render() {
-    return (
-      <Wrapper>
-        {this.state.fakeData.map((user) => (
-          <Table
-            key={user.name.first}
-            name={user.name.first}
-            age={user.dob.age}
-            email={user.email}
-            phone={user.phone}
-          />
-        ))}
-      </Wrapper>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
