@@ -8,6 +8,7 @@ import Search from "./components/Search";
 export default class App extends Component {
   state = {
     people: [],
+    search: "",
   };
 
   componentDidMount() {
@@ -53,11 +54,31 @@ export default class App extends Component {
     this.setState({ people });
   };
 
+  handleSearchByName = (e) => {
+    this.setState({ search: e.target.value });
+
+    console.log("state.search is", this.state.search);
+
+    let findName = this.state.people.filter((person) => {
+      let findPerson = person.name.first.toString().toLowerCase();
+      if (findPerson.includes(this.state.search)) {
+        return person;
+      }
+    });
+    this.setState({ people: findName });
+  };
+
   render() {
     return (
       <div>
         <Header />
-        <Search />
+        <input
+          type="text"
+          label="Search"
+          name="search"
+          placeholder="Search Name"
+          onChange={this.handleSearchByName}
+        ></input>
         <button
           type="button"
           label="Sort By Name"
@@ -72,8 +93,10 @@ export default class App extends Component {
         >
           Sort By Country
         </button>
+
         {this.state.people.map((person) => {
           let fullName = person.name.first + " " + person.name.last;
+          //console.log(person.name.first);
           let location =
             person.location.city +
             ", " +
