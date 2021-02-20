@@ -3,7 +3,7 @@ export default function Image(props) {
     <img
       src={props.src}
       alt={props.alt}
-      className="img-thumbnail rounded-circle mx-auto align-middle"
+      className="img-thumbnail rounded-circle mx-auto"
     ></img>
   );
 }
