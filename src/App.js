@@ -12,20 +12,21 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    const data = fetch("https://randomuser.me/api/?results=10");
+    const data = fetch("https://randomuser.me/api/?results=30");
     data
       .then((resp) => resp.json())
       .then((response) => {
         this.setState({ people: response.results });
-        console.log("setState", this.state.people);
       });
   }
 
+  //alphabetize list by last name
   handleSortName = () => {
     let people = this.state.people;
     people.sort((a, b) => {
-      let nameA = a.name.first.toUpperCase();
-      let nameB = b.name.first.toUpperCase();
+      //toUpperCase used for consistency in sorting
+      let nameA = a.name.last.toUpperCase();
+      let nameB = b.name.last.toUpperCase();
       if (nameA < nameB) {
         return -1;
       } else if (nameA > nameB) {
@@ -37,6 +38,7 @@ export default class App extends Component {
     this.setState({ people });
   };
 
+  //alphabetize list by country
   handleSortCountry = () => {
     let people = this.state.people;
     people.sort((a, b) => {
@@ -53,12 +55,11 @@ export default class App extends Component {
     this.setState({ people });
   };
 
+  //search for name in list
   handleSearchByName = (e) => {
     this.setState({ search: e.target.value });
-
-    console.log("state.search is", this.state.search);
-
     let findName = this.state.people.filter((person) => {
+      //toLowerCase and toString used for consistency in comparing
       let findPerson = person.name.first.toString().toLowerCase();
       let findOthPerson = person.name.last.toString().toLowerCase();
       if (
@@ -101,7 +102,6 @@ export default class App extends Component {
 
         {this.state.people.map((person) => {
           let fullName = person.name.first + " " + person.name.last;
-          //console.log(person.name.first);
           let location =
             person.location.city +
             ", " +
