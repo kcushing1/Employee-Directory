@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "./components/Table";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import Button from "./utils/Button";
 
 export default class App extends Component {
   state = {
@@ -83,9 +84,9 @@ export default class App extends Component {
           placeholder="Search Name"
           onChange={this.handleSearchByName}
         ></input>
-        <button
-          type="button"
-          label="Reset Search"
+        <Button
+          label={"Reset Search"}
+          text={"Reset"}
           onClick={(e) => {
             this.setState({ search: "" });
             const data = fetch("https://randomuser.me/api/?results=10");
@@ -96,23 +97,18 @@ export default class App extends Component {
                 console.log("setState", this.state.people);
               });
           }}
-        >
-          Reset
-        </button>
-        <button
-          type="button"
-          label="Sort By Name"
+        />
+        <Button
+          label={"Sort By Name"}
+          text={"Sort By Name"}
           onClick={this.handleSortName}
-        >
-          Sort By Name
-        </button>
-        <button
-          type="button"
-          label="Sort By Country"
+        />
+
+        <Button
+          label={"Sort By Country"}
+          text={"Sort By Country"}
           onClick={this.handleSortCountry}
-        >
-          Sort By Country
-        </button>
+        />
 
         {this.state.people.map((person) => {
           let fullName = person.name.first + " " + person.name.last;
