@@ -25,11 +25,11 @@ This is a React app. Using the command line, type "npm install" or "npm i" to st
 
 ## Usage
 
-Use the deployed app at: https://kcushing1.github.io/Employee-Directory/
+Use the deployed app at: https://employee-directory-kcushing1.herokuapp.com/
 
 Or download and install to your computer, using http://localhost:3000 to view in your browser.
 
-The current users are generated with Random User Generator API
+The current users are generated with Random User Generator API.
 
 ## License
 
