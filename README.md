@@ -25,7 +25,7 @@ This is a React app. Using the command line, type "npm install" or "npm i" to st
 
 ## Usage
 
-Use the deployed app at: url
+Use the deployed app at: https://kcushing1.github.io/Employee-Directory/
 
 Or download and install to your computer, using http://localhost:3000 to view in your browser.
 
