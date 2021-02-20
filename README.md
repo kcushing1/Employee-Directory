@@ -1,10 +1,4 @@
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-# Fitness-Tracker
+# Employee Directory
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -33,7 +27,7 @@ This is a React app. Using the command line, type "npm install" or "npm i" to st
 
 Use the deployed app at: url
 
-Or download and install to your computer.
+Or download and install to your computer, using http://localhost:3000 to view in your browser.
 
 The current users are generated with Random User Generator API
 
